@@ -1,0 +1,41 @@
+﻿@using FoodAir.Models
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Layout/MainLayout.cshtml";
+}
+
+    <div class="main-banner-2">
+
+    </div>
+    <div class="login-contect py-5">
+        <div class="container py-xl-5 py-3">
+            <div class="login-body">
+                <div class="login p-4 mx-auto">
+                    <h5 class="text-center mb-4">Đăng Nhập</h5>
+                    @using (Html.BeginForm("DangNhap", "DangNhap"))
+                    {
+                        
+                        <div class="form-group">
+                            <label>Your Name</label>
+                            <input type="text" class="form-control" name="name" placeholder="" required="">
+                        </div>
+                        <div class="form-group">
+                            <label class="mb-2">Password</label>
+                            <input type="password" class="form-control" name="password" placeholder="" required="">
+                        </div>
+                      
+                        <button type="submit" class="btn submit mb-4">Login</button>
+                        <p class="forgot-w3ls text-center mb-3">
+                            <a href="#" class="text-da">Forgot your password?</a>
+                        </p>
+                        <p class="account-w3ls text-center text-da">
+                            Don't have an account?
+                            <a href="@Url.Action("Index","DangKi")">Create one now</a>
+                        </p>
+                    }
+
+                </div>
+            </div>
+        </div>
+    </div>

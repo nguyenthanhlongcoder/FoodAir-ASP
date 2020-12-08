@@ -1,0 +1,28 @@
+﻿@using FoodAir.Models;
+@model IEnumerable<SanPham>
+
+
+    @foreach (var sp in Model)
+    {
+
+        <div class="col-lg-3 col-md-4 mt-lg-0 mt-5 mb-3">
+            <div class="card border-0 med-blog">
+                <div class="card-header p-0">
+                    <a href="menu.html">
+                        <img class="card-img-bottom" src="@Url.Content("~/Content/images/" + sp.HinhAnh)" alt="Card image cap">
+                    </a>
+                </div>
+                <div class="card-body border border-top-0">
+                    <h5 class="blog-title card-title m-0"><a href="menu.html">@sp.TenSP</a></h5>
+                    <h6 class="blog-title card-title m-0">@sp.DonGia đồng</h6>
+                    <p class="mt-3">@sp.MoTa</p>
+                    <a href="@Url.Action("ThemGioHang", "GioHang", new { @MaSP = sp.MaSP, @strURL = Request.Url.ToString()})" class="button-w3ls mt-4 mb-3">
+                        Thêm Vào Giỏ Hàng
+                        <span class="fa fa-caret-right ml-1" aria-hidden="true"></span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    }
+
+

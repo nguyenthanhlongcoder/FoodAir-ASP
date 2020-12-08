@@ -1,0 +1,38 @@
+﻿@using FoodAir.Models
+@model List<GioHang>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Layout/MainLayout.cshtml";
+}
+
+
+    <div class="main-grid2">
+        <h2>Giỏ hàng</h2>
+        @foreach (var item in Model)
+        {
+            <div class="cart_box">
+                <div class="message">
+                    <div class="alert-close"> </div>
+                    <div class="list_img"><img src="@Url.Content("~/Content/images/" + item.HinhAnh)" class="img-responsive" alt=""></div>
+                    <div class="list_desc">
+                        <h4><a href="#">@item.TenSP <span class="danger">x @item.SoLuong</span></a></h4><span class="actual">
+                            @item.ThanhTien VNĐ
+                        </span>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+            </div>
+
+        }
+
+        <div class="total">
+            <div class="total-left">
+                <p>Tổng tiền : <span>@ViewBag.TongTien VNĐ </span></p>
+            </div>
+            <div class="total-right">
+                <a href="#">Đặt Hàng</a>
+            </div>
+            <div class="clear"> </div>
+        </div>
+    </div>
+
