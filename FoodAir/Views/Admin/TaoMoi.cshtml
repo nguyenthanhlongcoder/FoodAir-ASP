@@ -1,0 +1,31 @@
+﻿
+@{
+    ViewBag.Title = "TaoMoi";
+    Layout = "~/Views/Layout/AdminLayout.cshtml";
+}
+
+    @using (Html.BeginForm("TaoMoi","Admin"))
+    {
+        <div class="form-group">
+            <label for="TenSanPham">Tên Sản Phẩm</label>
+            <input class="form-control" id="TenSanPham" name="TenSanPham" placeholder="Nhập tên sản phẩm">
+        </div>
+        <div class="form-group">
+            <label for="MoTa">Mô Tả</label>
+            <textarea id="MoTa" name="MoTa" rows="4" cols="50" class="form-control" placeholder="Nhập mô tả"></textarea>
+        </div>
+        <div class="form-group">
+            <label for="LoaiSanPham">Loại Sản Phẩm</label>
+            @Html.DropDownList("LoaiSP", null, new { @class = "form-control" })
+        </div>
+        <div class="form-group">
+            <label for="DonGia">Đơn Giá</label>
+            <input class="form-control" id="DonGia" name="DonGia" placeholder="Nhập đơn giá" type="number">
+        </div>
+        <div class="form-group">
+            <label for="HinhAnh">Hình Ảnh</label>
+            <input type="file" class="form-control-file" name="HinhAnh" id="HinhAnh">
+        </div>
+
+        <input type="submit" class="btn btn-primary" value="Tạo Mới"></input>
+    }

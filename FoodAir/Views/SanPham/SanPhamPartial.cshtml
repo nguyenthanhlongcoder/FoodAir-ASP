@@ -16,10 +16,11 @@
                     <h5 class="blog-title card-title m-0"><a href="menu.html">@sp.TenSP</a></h5>
                     <h6 class="blog-title card-title m-0">@sp.DonGia đồng</h6>
                     <p class="mt-3">@sp.MoTa</p>
-                    <a href="@Url.Action("ThemGioHang", "GioHang", new { @MaSP = sp.MaSP, @strURL = Request.Url.ToString()})" class="button-w3ls mt-4 mb-3">
-                        Thêm Vào Giỏ Hàng
-                        <span class="fa fa-caret-right ml-1" aria-hidden="true"></span>
-                    </a>
+                        <a href="@Url.Action("ThemGioHang", "GioHang", new { @MaSP = sp.MaSP, @strURL = Request.Url.ToString()})" class="button-w3ls mt-4 mb-3">
+                            <input type="submit" value="" hidden="hidden" />
+                            Thêm Vào Giỏ Hàng
+                            <span class="fa fa-caret-right ml-1" aria-hidden="true"></span>
+                        </a>
                 </div>
             </div>
         </div>

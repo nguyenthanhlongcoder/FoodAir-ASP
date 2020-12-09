@@ -1,0 +1,37 @@
+﻿@using FoodAir.Models;
+@model IEnumerable<SanPham>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Layout/AdminLayout.cshtml";
+}
+    
+    <a class="btn btn-success" href="@Url.Action("TaoMoi", "Admin")">Tạo Mới</a>
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Hình Ảnh</th>
+                <th scope="col">Tên Sản Phẩm</th>
+                <th scope="col">Mô Tả</th>
+                <th scope="col">Đơn Giá</th>
+                <th scope="col" colspan="2">Hành Động</th>
+            </tr>
+        </thead>
+        @foreach (var item in Model)
+        {
+
+            <tbody>
+                <tr>
+
+                    <th scope="row">@item.MaSP</th>
+                    <td><img src="@Url.Content("~/Content/images/" + item.HinhAnh)" style="width: 40%; height:auto" /></td>
+                    <td>@item.TenSP</td>
+                    <td>@item.MoTa</td>
+                    <td>@item.DonGia VNĐ</td>
+                    <td><a class="btn btn-primary text-wh"  href="@Url.Action("ChinhSua","Admin", new { MaSP = @item.MaSP})">Chỉnh Sửa</a></td>
+                    <td><a  class="btn btn-danger" href="@Url.Action("Xoa", "Admin", new { MaSP = @item.MaSP})">Xóa</a></td>
+
+                </tr>
+
+            </tbody>}
+        </table>

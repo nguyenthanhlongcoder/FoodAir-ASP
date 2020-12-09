@@ -10,7 +10,7 @@ namespace FoodAir.Controllers
     public class GioHangController : Controller
     {
         QuanLiBanHangModel db = new QuanLiBanHangModel();
-        // GET: GioHang
+
         public ActionResult Index()
         {
             ViewBag.TongTien = TinhTongTien();
@@ -47,7 +47,7 @@ namespace FoodAir.Controllers
 
             if(spCheck != null)
             {
-                spCheck.SoLuong++;
+                spCheck.SoLuong++;   
                 spCheck.ThanhTien = spCheck.SoLuong * spCheck.DonGia;
                 return Redirect(strURL);
             }
@@ -104,6 +104,60 @@ namespace FoodAir.Controllers
 
             ViewBag.GioHang = lstGioHang;
             return View(spCheck);
+        }
+        [HttpPost]
+        public ActionResult CapNhatGioHang(FormCollection f)
+        {
+            List<GioHang> lstGioHang = LayGioHang();
+            GioHang spCheck = lstGioHang.SingleOrDefault(n => n.MaSP == Int32.Parse(f["MaSP"].ToString()));
+            if(spCheck != null)
+            {
+                spCheck.SoLuong = Int32.Parse(f["SoLuong"].ToString());
+                spCheck.ThanhTien = spCheck.SoLuong * spCheck.DonGia;
+                return RedirectToAction("Index", "GioHang");
+            }
+            return View();
+        }
+        public ActionResult DatHang()
+        {
+            if (Session["GioHang"] == null || Session["GioHang"] == "")
+            {
+                Response.Write("<script>alert('Giỏ Hàng Trống!')</script>");
+            }
+            if(Session["TaiKhoan"] == null)
+            {
+                return RedirectToAction("Index", "DangNhap");
+            }
+            else
+            {
+                ThanhVien tv = (ThanhVien)Session["TaiKhoan"];
+                DonDatHang ddh = new DonDatHang();
+                ddh.NgayDat = DateTime.Now;
+                ddh.MaKH = tv.MaThanhVien;
+                ddh.TinhTrangGiaoHang = false;
+                ddh.DaThanhToan = false;
+                ddh.DaHuy = false;
+                db.DonDatHangs.Add(ddh);
+                db.SaveChanges();
+                List<GioHang> lstGioHang = LayGioHang();
+                
+                ChiTietDonDatHang ctddh = new ChiTietDonDatHang();
+                foreach(GioHang item in lstGioHang)
+                {
+                    ctddh.MaSP = item.MaSP;
+                    ctddh.SoLuong = item.SoLuong;
+                    ctddh.DonGia = item.DonGia;
+                    ctddh.TenSP = item.TenSP;
+                    ctddh.MaDDH = db.DonDatHangs.Max(p => p.MaDDH);
+                    db.ChiTietDonDatHangs.Add(ctddh);
+                    db.SaveChanges();
+                }
+                
+                Session["GioHang"] = null;
+                Response.Write("<script>alert('Đặt Hàng Thành Công!')</script>");
+
+                return RedirectToAction("Index", "GioHang");
+            }
         }
     }
 }

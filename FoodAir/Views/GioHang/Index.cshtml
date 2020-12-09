@@ -10,27 +10,34 @@
         <h2>Giỏ hàng</h2>
         @foreach (var item in Model)
         {
-            <div class="cart_box">
-                <div class="message">
-                    <div class="alert-close"> </div>
-                    <div class="list_img"><img src="@Url.Content("~/Content/images/" + item.HinhAnh)" class="img-responsive" alt=""></div>
-                    <div class="list_desc">
-                        <h4><a href="#">@item.TenSP <span class="danger">x @item.SoLuong</span></a></h4><span class="actual">
-                            @item.ThanhTien VNĐ
-                        </span>
+            using (Html.BeginForm("CapNhatGioHang", "GioHang"))
+            {
+                <div class="cart_box">
+                    <div class="message">
+                        <div class="alert-close"> </div>
+                        <div class="list_img"><img src="@Url.Content("~/Content/images/" + item.HinhAnh)" class="img-responsive" alt=""></div>
+                        <div class="list_desc">
+                            <h4><a href="#">@item.TenSP</a> <span class="text-danger">x @item.SoLuong</span></h4>
+                            <input aria-label="quanlity" onchange="" class="m-2" id="SoLuong" max="99" min="1" type="number" name="SoLuong" value="@item.SoLuong" />
+                            <input id="MaSP" name="MaSP" value="@item.MaSP" hidden="hidden"/>
+                            <span class="actual">
+                                @item.ThanhTien VNĐ
+                            </span>
+                        </div>
+                        <input type="submit" class="btn btn-danger" value="Cập Nhật"/>
+                        <div class="clear"></div>
                     </div>
-                    <div class="clear"></div>
                 </div>
-            </div>
+                }
 
-        }
+            }
 
         <div class="total">
             <div class="total-left">
                 <p>Tổng tiền : <span>@ViewBag.TongTien VNĐ </span></p>
             </div>
             <div class="total-right">
-                <a href="#">Đặt Hàng</a>
+                <a href="@Url.Action("DatHang", "GioHang")">Đặt Hàng</a>
             </div>
             <div class="clear"> </div>
         </div>

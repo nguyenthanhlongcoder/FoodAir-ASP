@@ -22,7 +22,6 @@ namespace FoodAir.Models
                 this.TenSP = sp.TenSP;
                 this.HinhAnh = sp.HinhAnh;
                 this.DonGia = sp.DonGia.Value;
-                this.SoLuong = sl;
                 this.ThanhTien = DonGia * SoLuong;
 
             }

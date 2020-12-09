@@ -17,6 +17,7 @@ namespace FoodAir.Models
 
         [Key]
         public int MaDDH { get; set; }
+        public bool? DaHuy { get; set; }
 
         public DateTime? NgayDat { get; set; }
 
