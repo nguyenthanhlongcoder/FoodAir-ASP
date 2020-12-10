@@ -21,5 +21,13 @@ namespace FoodAir.Controllers
             var lstSanPhamMoi = db.SanPhams.Where(n => n.Moi == 1);
             return PartialView(lstSanPhamMoi);
         }
+        public ActionResult Aboutus()
+        {
+            return View();
+        }
+        public ActionResult Contact()
+        {
+            return View();
+        }
     }
 }

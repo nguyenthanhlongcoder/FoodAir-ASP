@@ -1,0 +1,64 @@
+﻿@using FoodAir.Models;
+@model IEnumerable<ChiTietDonDatHang>
+@{
+    ViewBag.Title = "ThongTinDonHang";
+    Layout = "~/Views/Layout/AdminLayout.cshtml";
+}
+<h3>Thông tin đơn hàng <span class="text-danger">@ViewBag.TenKH</span> </h3>
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">Mã Đơn Hàng: <span class="text-danger">@ViewBag.MaDDH</span></th>
+            <th scope="col">Tên Khách Hàng: <span class="text-danger">@ViewBag.TenKH</span></th>
+            <th scope="col">Ngày Đặt: <span class="text-danger">@ViewBag.NgayDat</span></th>
+        </tr>
+    </thead>
+</table>
+<table class="table">
+<thead>
+    <tr>
+        <th scope="col">#</th>
+        <th scope="col">Tên Sản Phẩm</th>
+        <th scope="col">Hình Ảnh</th>
+        <th scope="col">Số Lượng Đặt</th>
+        <th scope="col">Đơn Giá</th>
+
+    </tr>
+</thead>
+<tbody>
+    @foreach (var item in Model)
+    {
+        QuanLiBanHangModel db = new QuanLiBanHangModel();
+        SanPham sp = db.SanPhams.SingleOrDefault(n => n.MaSP == item.MaSP);
+        <tr>
+            <th scope="row">@item.MaSP</th>
+            <td>@sp.TenSP</td>
+            <td><img style="width: 30%" src="@Url.Content("~/Content/images/" + sp.HinhAnh)" /></td>
+
+            <td>@item.SoLuong</td>
+            <td>@item.DonGia VNĐ</td>
+        </tr>
+    }
+    <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td>Tổng tiền: <span class="text-danger">@ViewBag.TongTien VNĐ</span></td>
+    </tr>
+    <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td>
+            @using (Html.BeginForm("GiaoHang", "Admin"))
+            {
+                <input hidden="hidden" name="MaDDH" value="@ViewBag.MaDDH" />
+                <input type="submit" class="btn btn-primary" value="Giao Hang"/>
+            }
+        </td>
+    </tr>
+
+</tbody>
+</table>

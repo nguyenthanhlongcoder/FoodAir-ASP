@@ -1,0 +1,46 @@
+﻿@using FoodAir.Models
+@model IEnumerable<DonDatHang>
+@{
+    ViewBag.Title = "ChuaGiaoHang";
+    Layout = "~/Views/Layout/AdminLayout.cshtml";
+}
+<nav class="nav nav-pills nav-justified">
+    <a class="nav-item nav-link active" href="@Url.Action("ChuaGiaoHang", "Admin")">Chưa Giao Hàng</a>
+    <a class="nav-item nav-link" href="@Url.Action("DaGiaoHang", "Admin")">Đã Giao Hàng</a>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Họ Và Tên KH</th>
+                <th scope="col">Ngày Đặt</th>
+                <th scope="col">Đã Hủy</th>
+                <th scope="col">Hành Động</th>
+            </tr>
+        </thead>
+        @foreach (var item in Model)
+        { QuanLiBanHangModel db = new QuanLiBanHangModel();
+                KhachHang KH = db.KhachHangs.SingleOrDefault(n => n.MaKH == item.MaKH);
+            <tbody>
+                <tr>
+                    <td>@item.MaDDH</td>
+                    <td>@KH.TenKH</td>
+                    <td>@item.NgayDat</td>
+                    <td>@item.DaHuy</td>
+                    @using (Html.BeginForm("ThongTinDonHang", "Admin"))
+                    {
+                        <input hidden="hidden" name="MaDDH" value="@item.MaDDH" />
+                        <input hidden="hidden" name="TenKH" value="@KH.TenKH" />
+                        <input hidden="hidden" name="NgayDat" value="@item.NgayDat" />
+                        <input hidden="hidden" name="NgayDat" value="@item." />
+
+                        <td><input type="submit" class="btn btn-primary text-wh" value="Duyệt Đơn Hàng"></input></td>
+
+                    }
+
+                </tr>
+            </tbody>
+        }
+        </table>
+
+</nav>

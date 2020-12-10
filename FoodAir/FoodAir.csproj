@@ -308,11 +308,15 @@
     <Content Include="Views\DangNhap\Index.cshtml" />
     <Content Include="Views\DangKi\Index.cshtml" />
     <Content Include="Views\GioHang\Index.cshtml" />
-    <Content Include="Views\GioHang\GioHangPartial.cshtml" />
     <Content Include="Views\Layout\AdminLayout.cshtml" />
     <Content Include="Views\Admin\Index.cshtml" />
     <Content Include="Views\Admin\TaoMoi.cshtml" />
     <Content Include="Views\Admin\ChinhSua.cshtml" />
+    <Content Include="Views\Admin\ChuaGiaoHang.cshtml" />
+    <Content Include="Views\Admin\DaGiaoHang.cshtml" />
+    <Content Include="Views\Admin\ThongTinDonHang.cshtml" />
+    <Content Include="Views\Home\Aboutus.cshtml" />
+    <Content Include="Views\Home\Contact.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Views\Shared\" />

@@ -3,7 +3,7 @@
 
 <html>
 <head>
-    <title>Tasty Burger Restaurants Category Bootstrap Responsive Web Template | Home :: W3layouts</title>
+    <title>FoodAir</title>
     <!-- Meta tag Keywords -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta charset="UTF-8">
@@ -64,12 +64,12 @@
                         <div class="row">
                             <div class="col-xl-3 col-6 header-top_w3layouts">
                                 <p class="text-da">
-                                    <span class="fa fa-map-marker mr-2"></span>Parma Via, Italy
+                                    <span class="fa fa-map-marker mr-2"></span>Vũng Tàu, Việt Nam
                                 </p>
                             </div>
                             <div class="col-xl-3 col-6 header-top_w3layouts">
                                 <p class="text-da">
-                                    <span class="fa fa-phone mr-2"></span>+1 000263676
+                                    <span class="fa fa-phone mr-2"></span>+84 908652940
                                 </p>
                             </div>
                             <div class="col-xl-6"></div>
@@ -103,7 +103,7 @@
                                 <!-- social icons -->
                                 <ul class="top-right-info">
                                     <li>
-                                        <p>Follow Us:</p>
+                                        <p>Theo dõi:</p>
                                     </li>
                                     <li class="facebook-w3">
                                         <a href="#facebook">
@@ -134,8 +134,8 @@
             <div class="nav-content">
                 <!-- logo -->
                 <h1>
-                    <a id="logo" class="logo" href="index.html">
-                        <img src="~/Content/images/logo.png" alt="" class="img-fluid"><span>Tasty</span> Burger
+                    <a id="logo" class="logo" href="@Url.Action("Index", "Home")">
+                        <img src="~/Content/images/logo.png" alt="" class="img-fluid"><span>Food</span>Air
                     </a>
                 </h1>
                 <!-- //logo -->
@@ -146,25 +146,10 @@
                         <input type="checkbox" id="drop">
                         <ul class="menu">
                             <li><a href="index.html">@Html.ActionLink("Trang Chủ", "Index", "Home")</a></li>
-                            <li><a href="about.html">About Us</a></li>
-                            <li>
-                                <!-- First Tier Drop Down -->
-                                <label for="drop-3" class="toggle toogle-2">
-                                    Pages <span class="fa fa-angle-down" aria-hidden="true"></span>
-                                </label>
-                                <a href="#pages">Pages <span class="fa fa-angle-down" aria-hidden="true"></span></a>
-                                <input type="checkbox" id="drop-3">
-                                <ul>
-                                    <li><a class="drop-text" href="#services">Services</a></li>
-                                    <li><a class="drop-text" href="about.html">Our Chefs</a></li>
-                                    <li><a class="drop-text" href="#blog">Blog</a></li>
-                                    <li><a class="drop-text" href="single.html">Single Page</a></li>
-                                    <li><a class="drop-text" href="">@Html.ActionLink("Đăng Nhập", "Index", "Login")</a></li>
-                                    <li><a class="drop-text" href="register.html">Register</a></li>
-                                </ul>
-                            </li>
-                            <li><a href="menu.html">@Html.ActionLink("Thực đơn", "Index", "SanPham")</a></li>
-                            <li><a href="contact.html">Contact Us</a></li>
+                            <li><a href="about.html">@Html.ActionLink("Về Chúng Tôi", "Aboutus", "Home")</a></li>
+                            
+                            <li><a href="menu.html">@Html.ActionLink("Thực Đơn", "Index", "SanPham")</a></li>
+                            <li><a href="contact.html">@Html.ActionLink("Liên Hệ", "Contact", "Home")</a></li>
                             <li>
                                 <!-- login -->
                                 <a href="@Url.Action("Index", "GioHang")" class="dwn-button ml-lg-5">
@@ -186,8 +171,8 @@
     <!-- copyright -->
     <div class="cpy-right text-center py-3">
         <p>
-            © 2019 Tasty Burger. All rights reserved | Design by
-            <a href="http://w3layouts.com"> W3layouts.</a>
+            © 2020 FoodAir. All rights reserved | Design by
+            <a href="#"> AnhLang</a>
         </p>
     </div>
     <!-- //copyright -->
