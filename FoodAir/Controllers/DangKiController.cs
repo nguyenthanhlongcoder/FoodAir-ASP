@@ -28,10 +28,12 @@ namespace FoodAir.Controllers
             string sUsername = f["username"].ToString();
             string sPasword1 = f["password1"].ToString();
             string sPassword2 = f["password2"].ToString();
+            string sDiaCHi = f["diachi"].ToString();
 
             ThanhVien tv = new ThanhVien();
             tv.HoTen = sHoVaTen;
             tv.Email = sEmail;
+            tv.DiaChi = sDiaCHi;
             tv.SoDienThoai = sSoDienThoai;
             tv.TaiKhoan = sUsername;
             tv.MatKhau = sPasword1;
